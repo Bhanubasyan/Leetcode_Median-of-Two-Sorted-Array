@@ -1,0 +1,48 @@
+import java.io.*;
+import java.util.*;
+class Solution { 
+public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int n1 = nums1.length;
+        int n2 = nums2.length;
+        int n3 = n2 + n1;
+        int[] C = new int[n3];
+        // copy elements of array A in array C
+        for (int i = 0; i < n1; i++) {
+            C[i] = nums1[i];
+        }
+        // copy elements of array B in array C
+        for (int i = 0; i < n2; i++) {
+            C[n1 + i] = nums2[i];
+        }
+        Arrays.sort(C);
+       
+        double median;
+
+        if (C.length % 2 == 0) {
+            int a = (C.length / 2 - 1);
+            int b = (C.length / 2);
+        
+            double Sum = (C[a] + C[b]);
+            median = (Sum / 2);
+
+            System.out.println("Median is " + median);
+
+        } 
+         else{
+            median = C[C.length / 2];
+            System.out.println("Median is " + median);
+        }
+
+
+        return median;
+    }
+
+    public static void main(String[] args) {
+        int[] arr1 = { 1, 3 };
+        int[] arr2 = { 2 };
+       
+        Solution obj = new Solution();
+        obj.findMedianSortedArrays(arr1, arr2);
+
+    }
+}
